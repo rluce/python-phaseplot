@@ -1,8 +1,9 @@
 import phaseplot as pp
-import matplotlib.pyplot as plt
 
-def polyfun(z):
-    return z*z - z + 1
+def example_polynomial():
+    """Standard phase portait of a degree-two polynomial"""
 
-pp.phase_portrait(polyfun)
-plt.show()
+    def polyfun(z):
+        return z*z - z + 1
+
+    p = pp.phase_portrait(polyfun)
