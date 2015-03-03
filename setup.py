@@ -82,6 +82,7 @@ setup(
     #package_data={
     #    'phaseplot': ['ppgallery.ipynb'],
     #},
+    test_suite = "tests",
 
     # Although 'package_data' is the preferred approach, in some case you may
     # need to place data files outside of your packages.
