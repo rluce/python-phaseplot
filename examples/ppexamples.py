@@ -1,3 +1,6 @@
+# Collection of small examples.  Convention:  All examples must be self
+# contained in a single function having 'example_' as its prefix.
+
 import phaseplot as pp
 
 def example_polynomial():
@@ -7,3 +10,4 @@ def example_polynomial():
         return z*z - z + 1
 
     p = pp.phase_portrait(polyfun)
+    return p
