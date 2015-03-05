@@ -11,3 +11,8 @@ def example_polynomial():
 
     p = pp.phase_portrait(polyfun)
     return p
+
+
+if __name__ == '__main__':
+    # No purpose here, just Run all examples
+    example_polynomial()
