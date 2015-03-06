@@ -28,10 +28,10 @@ def phase_portrait(fun, delta=0.01, box=[-1, 1, -1, 1]):
     fZ = fun(Z)
 
     # Pass over for display, and return AxesImage
-    return show_portrait(Z, fZ)
+    return show_portrait(Z, fZ, box)
 
 
-def show_portrait(Z, fZ, modulus=False):
+def show_portrait(Z, fZ, box, modulus=False):
     """Show phase portrait represented by given rectangular array of
     complex numbers."""
 
@@ -45,4 +45,4 @@ def show_portrait(Z, fZ, modulus=False):
     mapper = cm.ScalarMappable(norm=norm, cmap=cmap)
 
     imvals = mapper.to_rgba(phase)
-    return plt.imshow(imvals)
+    return plt.imshow(imvals, origin='lower', extent=tuple(box))
