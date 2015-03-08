@@ -1,4 +1,5 @@
 import unittest
+import phaseplot
 from phaseplot import phase_portrait
 import matplotlib
 from matplotlib import pyplot as plt
@@ -63,3 +64,8 @@ class TestBasics(unittest.TestCase):
         self.assertEqual(ai.get_extent(), fullbox)
 
 
+    def test_box_normalization(self)
+        """Test that input is converted to float"""
+        result = phaseplot._interpret_box( (1,2,3,4) )
+        for item in result:
+            self.assertIsInstance(item, float)

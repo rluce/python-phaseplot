@@ -45,9 +45,11 @@ def phase_portrait(fun, delta=0.01, box=(-1, 1, -1, 1)):
 
 def _interpret_box(box):
     """Expand given tuple for box specification to 4-tuple form.
+    The returned values are normalized to be of type float, even if
+    corresponding values of the input weren't originally.
     Examples:
         >>> _interpret_box( (1,2,3,4) )
-        (1, 2, 3, 4)
+        (1.0, 2.0, 3.0, 4.0)
         >>> _interpret_box( (1+1j, 2, 3) )
         (-1.0, 3.0, -2.0, 4.0)
         >>> _interpret_box( (1+1j, 2+4j) )
