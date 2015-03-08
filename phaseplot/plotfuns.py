@@ -24,6 +24,7 @@ def phase_portrait(fun, delta=0.01, box=[-1, 1, -1, 1]):
         <matplotlib.image.AxesImage object at 0x...>
 
     Note that a reference to the created AxesImage object is returned.
+    Use matplotlib.pyplot.show() in order to display the actual image.
     """
     x = np.arange(box[0], box[1], delta)
     y = np.arange(box[2], box[3], delta)
