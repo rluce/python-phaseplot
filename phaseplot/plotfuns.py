@@ -37,10 +37,10 @@ def phase_portrait(fun, delta=0.01, box=[-1, 1, -1, 1]):
     fZ = fun(Z)
 
     # Pass over for display, and return AxesImage
-    return show_portrait(Z, fZ, box)
+    return _gen_portrait(Z, fZ, box)
 
 
-def show_portrait(Z, fZ, box, modulus=False):
+def _gen_portrait(Z, fZ, box, modulus=False):
     """Show phase portrait represented by given rectangular array of
     complex numbers."""
 
