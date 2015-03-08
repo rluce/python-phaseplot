@@ -26,6 +26,8 @@ def phase_portrait(fun, delta=0.01, box=(-1, 1, -1, 1)):
     Note that a reference to the created AxesImage object is returned.
     Use matplotlib.pyplot.show() in order to display the actual image.
     """
+
+    box = _interpret_box(box)
     x = np.arange(box[0], box[1], delta)
     y = np.arange(box[2], box[3], delta)
 
@@ -38,6 +40,28 @@ def phase_portrait(fun, delta=0.01, box=(-1, 1, -1, 1)):
 
     # Pass over for display, and return AxesImage
     return _gen_portrait(Z, fZ, box)
+
+########### NON API #####################################################
+
+def _interpret_box(box):
+    """Expand given tuple for box specification to 4-tuple form.
+    Examples:
+        >>> _interpret_box( (1,2,3,4) )
+        (1, 2, 3, 4)
+        >>> _interpret_box( (1+1j, 2, 3) )
+        (-1, 3, -2, 4)
+        >>> _interpret_box( (1+1j, 2+4j) )
+        (1, 2, 1, 4)
+        >>> _interpret_box( (0+1j, 1) )
+        (-1, 1, 0, 2)
+        >>> _interpret_box( (1-1j) )
+        (0, 2, 0, -2)
+    """
+
+    if len(box) == 4:
+        return box
+    else:
+        return (-1,1,-1,1)
 
 
 def _gen_portrait(Z, fZ, box, modulus=False):
