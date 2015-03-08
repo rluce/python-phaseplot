@@ -27,7 +27,7 @@ def phase_portrait(fun, delta=0.01, box=(-1, 1, -1, 1)):
     Use matplotlib.pyplot.show() in order to display the actual image.
     """
 
-    box = _interpret_box(box)
+    box = interpret_box(box)
     x = np.arange(box[0], box[1], delta)
     y = np.arange(box[2], box[3], delta)
 
@@ -39,24 +39,24 @@ def phase_portrait(fun, delta=0.01, box=(-1, 1, -1, 1)):
     fZ = fun(Z)
 
     # Pass over for display, and return AxesImage
-    return _gen_portrait(Z, fZ, box)
+    return gen_portrait(Z, fZ, box)
 
 ########### NON API #####################################################
 
-def _interpret_box(box):
+def interpret_box(box):
     """Expand given tuple for box specification to 4-tuple form.
     The returned values are normalized to be of type float, even if
     corresponding values of the input weren't originally.
     Examples:
-        >>> _interpret_box( (1,2,3,4) )
+        >>> interpret_box( (1,2,3,4) )
         (1.0, 2.0, 3.0, 4.0)
-        >>> _interpret_box( (1+1j, 2, 3) )
+        >>> interpret_box( (1+1j, 2, 3) )
         (-1.0, 3.0, -2.0, 4.0)
-        >>> _interpret_box( (1+1j, 2+4j) )
+        >>> interpret_box( (1+1j, 2+4j) )
         (1.0, 2.0, 1.0, 4.0)
-        >>> _interpret_box( (0+1j, 1) )
+        >>> interpret_box( (0+1j, 1) )
         (-1.0, 1.0, 0.0, 2.0)
-        >>> _interpret_box( (1-1j) )
+        >>> interpret_box( (1-1j) )
         (0.0, 2.0, 0.0, -2.0)
     """
 
@@ -66,7 +66,7 @@ def _interpret_box(box):
         return (-1,1,-1,1)
 
 
-def _gen_portrait(Z, fZ, box, modulus=False):
+def gen_portrait(Z, fZ, box, modulus=False):
     """Show phase portrait represented by given rectangular array of
     complex numbers."""
 
