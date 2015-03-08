@@ -4,18 +4,18 @@ import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 
 
-def phase_portrait(fun, delta=0.01, box=[-1, 1, -1, 1]):
+def phase_portrait(fun, delta=0.01, box=(-1, 1, -1, 1)):
     """Display phase portrait of a given function.
 
     Arguments:
         delta  Sampling rate; defines the resolution of the portrait.
                Default value: 0.01
 
-        box    Rectangular plot region in the complex plane:
+        box    A 4-tuple defining the rectangular plot region in the complex
+               plane:
                    box[0] <= real(z) <= box[1] 
                    box[2] <= imag(z) <= box[3] 
-               Default value: [-1,1,-1,1]
-
+               Default value: (-1,1,-1,1)
 
     Example:
     Here is a phase portrait of the function f(z) = z:

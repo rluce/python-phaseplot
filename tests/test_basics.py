@@ -18,12 +18,12 @@ class TestBasics(unittest.TestCase):
 
         # See also: issue #1
 
-        ai = phase_portrait(lambda(z) : z, box = [-1,1,-1,1])
+        ai = phase_portrait(lambda(z) : z, box = (-1,1,-1,1))
         # extent = (left, right, bottom, top)
         extent = ai.get_extent()
         self.assertEqual( extent, (-1, 1, -1, 1) )
 
-        ai = phase_portrait(lambda(z) : z, box = [-1,2,-3,4])
+        ai = phase_portrait(lambda(z) : z, box = (-1,2,-3,4))
         # extent = (left, right, bottom, top)
         extent = ai.get_extent()
         self.assertEqual( extent, (-1, 2, -3, 4) )
