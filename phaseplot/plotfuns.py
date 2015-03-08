@@ -20,7 +20,7 @@ def phase_portrait(fun, delta=0.01, box=[-1, 1, -1, 1]):
     Example:
     Here is a phase portrait of the function f(z) = z:
         >>> import phaseplot as pp
-        >>> phase_portrait(lambda(z) : z) #doctest: +ELLIPSIS
+        >>> pp.phase_portrait(lambda(z) : z) #doctest: +ELLIPSIS
         <matplotlib.image.AxesImage object at 0x...>
 
     Note that a reference to the created AxesImage object is returned.
