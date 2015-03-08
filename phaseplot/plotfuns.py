@@ -16,8 +16,11 @@ def phase_portrait(fun, delta=0.01, box=(-1, 1, -1, 1)):
                    box[0] <= real(z) <= box[1] 
                    box[2] <= imag(z) <= box[3] 
                Default value: (-1,1,-1,1)
+               Further methods of specifying the rectangular region are
+               discussed below.
 
     Example:
+    --------
     Here is a phase portrait of the function f(z) = z:
         >>> import phaseplot as pp
         >>> pp.phase_portrait(lambda(z) : z) #doctest: +ELLIPSIS
@@ -25,6 +28,20 @@ def phase_portrait(fun, delta=0.01, box=(-1, 1, -1, 1)):
 
     Note that a reference to the created AxesImage object is returned.
     Use matplotlib.pyplot.show() in order to display the actual image.
+
+    Alternative box specification
+    -----------------------------
+    The |box| parameter also takes other forms than described above (all radii
+    are understood in infinity norm):
+
+      - A 3-tuple (m, r1, r2) where 'm' is the midpoint, 'r1' is the radius
+        for the real part, and 'r2' is the radius for the imaginary part.
+      - A 2-tuple (z1, z2) where z1, z2 are the lower-left and upper-right
+        corners of the plot rectangle. NOTE: z2 must be of type 'complex'.
+      - A 2-tuple (m, r) where 'm' is the midpoint and 'r' the radius for both
+        the real and imaginary part.
+      - A 1-tuple or scalar defining the midpoint m.  In this case a plot box
+        with radius 1 is produced.
     """
 
     box = interpret_box(box)
