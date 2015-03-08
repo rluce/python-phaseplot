@@ -60,10 +60,41 @@ def interpret_box(box):
         (0.0, 2.0, -2.0, 0.0)
     """
 
+    if (isinstance(box, float) or isinstance(box, complex) or
+        isinstance(box, int)):
+        # Turn scalar into 1-tuple
+        box = box,
+
     if len(box) == 4:
-        return box
-    else:
-        return (-1,1,-1,1)
+        # Two intervals specified, nothing to do
+        outbox = box
+    elif len(box) == 3:
+        # We have a midpoint and radii for real and imag part
+        (mid, r_re, r_im) = box
+
+        # Allow real input, interpret with mid.z == 0
+        mid = complex(mid)
+        outbox = (
+            mid.real - r_re, mid.real + r_re,
+            mid.imag - r_im, mid.imag + r_im
+            )
+    elif len(box) == 2 and type(box[1]) == complex:
+        # We have lower-left and upper-right point in the complex plae
+
+        (ll, ur) = box
+        ll = complex(ll)
+
+        outbox = (ll.real, ur.real, ll.imag, ur.imag)
+    elif len(box) == 2:
+        (mid, r) = box
+        mid = complex(mid)
+        outbox = (mid.real - r, mid.real + r, mid.imag - r, mid.imag + r)
+    elif len(box) == 1:
+        mid = complex(box[0])
+        outbox = (mid.real - 1, mid.real + 1, mid.imag - 1, mid.imag + 1)
+    else: assert(False)
+
+    return tuple([float(v) for v in outbox])
 
 
 def gen_portrait(Z, fZ, box, modulus=False):
