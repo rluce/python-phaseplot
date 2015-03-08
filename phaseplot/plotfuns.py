@@ -57,7 +57,7 @@ def interpret_box(box):
         >>> interpret_box( (0+1j, 1) )
         (-1.0, 1.0, 0.0, 2.0)
         >>> interpret_box( (1-1j) )
-        (0.0, 2.0, 0.0, -2.0)
+        (0.0, 2.0, -2.0, 0.0)
     """
 
     if len(box) == 4:
